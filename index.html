@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>张三 - 在线简历</title>
+  <style>
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
+    .container{max-width:800px;margin:40px auto;padding:30px 40px;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+    h1,h2{margin-top:0}
+    h1{font-size:2em}
+    h2{font-size:1.4em;margin:24px 0 8px;border-bottom:1px solid #eaeaea;padding-bottom:4px}
+    a{color:#0366d6;text-decoration:none}
+    a:hover{text-decoration:underline}
+    ul{padding-left:20px}
+    .contact{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px;font-size:.95em}
+    @media(max-width:600px){.container{margin:20px;padding:20px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>张三 / Zhang San</h1>
+    <p>后端开发工程师 | 北京 | 3 年经验</p>
+
+    <div class="contact">
+      <a href="mailto:zhangsan@example.com">📧 zhangsan@example.com</a>
+      <a href="https://github.com/alice2025" target="_blank">🐙 GitHub</a>
+      <a href="https://linkedin.com/in/zhangsan" target="_blank">💼 LinkedIn</a>
+    </div>
+
+    <h2>👨‍💻 技术栈</h2>
+    <ul>
+      <li>语言：Python / Go / Java</li>
+      <li>框架：Flask、Gin、Spring Boot</li>
+      <li>数据库：MySQL、Redis、PostgreSQL</li>
+      <li>工具：Docker、GitHub Actions、Linux</li>
+    </ul>
+
+    <h2>🎓 教育背景</h2>
+    <p><strong>北京邮电大学</strong>　计算机科学与技术　本科　2016 – 2020</p>
+
+    <h2>💼 工作经历</h2>
+    <p><strong>ABC 科技有限公司</strong>　后端开发工程师　2021.07 – 至今</p>
+    <ul>
+      <li>负责 **** 系统核心接口，日均 QPS 8k+，P99 < 100 ms</li>
+      <li>主导 Docker 化改造，部署时间从 30 min 缩短到 5 min</li>
+    </ul>
+
+    <h2>🏆 项目亮点</h2>
+    <p><strong>实时订单分发引擎</strong>（2022）<br/>
+    基于 Go + Redis Stream，支持 10w 级并发，GitHub 300+ star。</p>
+
+    <h2>📄 下载</h2>
+    <p><a href="resume.pdf" download>PDF 简历</a>（把同名 pdf 传进仓库即可）</p>
+  </div>
+</body>
+</html>
