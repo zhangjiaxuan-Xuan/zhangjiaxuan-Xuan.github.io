@@ -3,55 +3,599 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>张三 - 在线简历</title>
+  <title>张家瑄 - Zhang Jiaxuan</title>
   <style>
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:#f5f5f5;color:#333;line-height:1.6}
-    .container{max-width:800px;margin:40px auto;padding:30px 40px;background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
-    h1,h2{margin-top:0}
-    h1{font-size:2em}
-    h2{font-size:1.4em;margin:24px 0 8px;border-bottom:1px solid #eaeaea;padding-bottom:4px}
-    a{color:#0366d6;text-decoration:none}
-    a:hover{text-decoration:underline}
-    ul{padding-left:20px}
-    .contact{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px;font-size:.95em}
-    @media(max-width:600px){.container{margin:20px;padding:20px}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: visible;
+      width: 100%;
+      position: relative;
+      min-height: 600px;
+      padding: 40px;
+    }
+    
+    .left-panel {
+      background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+      color: #fff;
+      padding: 25px;
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(79, 172, 254, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 10;
+    }
+    
+    .profile-image {
+      width: 220px;
+      height: 180px;
+      border-radius: 15px;
+      object-fit: contain;
+      border: 3px solid rgba(255,255,255,0.3);
+      margin-bottom: 15px;
+    }
+    
+    .name {
+      font-size: 1.6em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .title {
+      font-size: 0.9em;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      width: 100%;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      font-size: 0.9em;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .contact-icon {
+      margin-right: 10px;
+      font-size: 1em;
+    }
+    
+    .contact-link {
+      color: #fff;
+      text-decoration: none;
+      flex: 1;
+    }
+    
+    .right-panel {
+      padding: 20px 40px 40px 20px;
+      width: 100%;
+      overflow-y: auto;
+    }
+    
+    .lang-switch {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      z-index: 100;
+    }
+    
+    .lang-btn {
+      background: rgba(255,255,255,0.9);
+      border: none;
+      padding: 8px 15px;
+      margin: 0 5px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .lang-btn.active {
+      background: #4facfe;
+      color: #fff;
+    }
+    
+    .lang-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    .section {
+      margin-bottom: 35px;
+    }
+    
+    .section:first-child {
+      margin-left: 380px;
+      min-height: 420px;
+    }
+    
+    .section:nth-child(2) {
+      margin-left: 380px;
+      margin-top: -40px;
+    }
+    
+    .section:nth-child(3) {
+      margin-left: 200px;
+      margin-top: -30px;
+    }
+    
+    .section-title {
+      font-size: 1.8em;
+      color: #4facfe;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(45deg, #4facfe, #00f2fe);
+      border-radius: 2px;
+    }
+    
+    .research-area, .education-item, .publication-item {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      border-left: 4px solid #4facfe;
+    }
+    
+    .publication-link {
+      color: #4facfe;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    .publication-link:hover {
+      text-decoration: underline;
+    }
+    
+    .lang-content {
+      display: none;
+    }
+    
+    .lang-content.active {
+      display: block;
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #4facfe;
+      font-weight: bold;
+    }
+    
+    .abstract-btn {
+      background: #4facfe;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9em;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .abstract-btn:hover {
+      background: #3d8bfe;
+      transform: translateY(-1px);
+    }
+    
+    .abstract-content {
+      display: none;
+      background: #f0f8ff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      border-left: 3px solid #4facfe;
+      line-height: 1.7;
+    }
+    
+    .abstract-content.show {
+      display: block;
+    }
+    
+    .email-copy {
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .email-copy:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .copy-tooltip {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .copy-tooltip.show {
+      opacity: 1;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      .card {
+        min-height: auto;
+        padding: 20px;
+      }
+      
+      .left-panel {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 25px;
+      }
+      
+      .right-panel {
+        padding: 0;
+        width: 100%;
+      }
+      
+      .section:first-child,
+      .section:nth-child(2),
+      .section:nth-child(3) {
+        margin-left: 0;
+        min-height: auto;
+        margin-top: 0;
+      }
+      
+      .profile-image {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .name {
+        font-size: 1.4em;
+      }
+      
+      .title {
+        font-size: 0.85em;
+      }
+      
+      .lang-switch {
+        position: relative;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>张三 / Zhang San</h1>
-    <p>后端开发工程师 | 北京 | 3 年经验</p>
-
-    <div class="contact">
-      <a href="mailto:zhangsan@example.com">📧 zhangsan@example.com</a>
-      <a href="https://github.com/alice2025" target="_blank">🐙 GitHub</a>
-      <a href="https://linkedin.com/in/zhangsan" target="_blank">💼 LinkedIn</a>
-    </div>
-
-    <h2>👨‍💻 技术栈</h2>
-    <ul>
-      <li>语言：Python / Go / Java</li>
-      <li>框架：Flask、Gin、Spring Boot</li>
-      <li>数据库：MySQL、Redis、PostgreSQL</li>
-      <li>工具：Docker、GitHub Actions、Linux</li>
-    </ul>
-
-    <h2>🎓 教育背景</h2>
-    <p><strong>北京邮电大学</strong>　计算机科学与技术　本科　2016 – 2020</p>
-
-    <h2>💼 工作经历</h2>
-    <p><strong>ABC 科技有限公司</strong>　后端开发工程师　2021.07 – 至今</p>
-    <ul>
-      <li>负责 **** 系统核心接口，日均 QPS 8k+，P99 < 100 ms</li>
-      <li>主导 Docker 化改造，部署时间从 30 min 缩短到 5 min</li>
-    </ul>
-
-    <h2>🏆 项目亮点</h2>
-    <p><strong>实时订单分发引擎</strong>（2022）<br/>
-    基于 Go + Redis Stream，支持 10w 级并发，GitHub 300+ star。</p>
-
-    <h2>📄 下载</h2>
-    <p><a href="resume.pdf" download>PDF 简历</a>（把同名 pdf 传进仓库即可）</p>
+  <div class="lang-switch">
+    <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
   </div>
+
+  <div class="container">
+    <div class="card">
+      <!-- 左侧个人信息面板 -->
+      <div class="left-panel">
+        <img src="static/images/self.jpg" alt="张家瑄" class="profile-image" onerror="this.style.display='none'">
+        
+        <div class="lang-content active" data-lang="zh">
+          <h1 class="name">张家瑄</h1>
+          <p class="title">机器人工程本科生<br>喜欢科研的人</p>
+        </div>
+        
+        <div class="lang-content" data-lang="en">
+          <h1 class="name">Zhang Jiaxuan(Joey)</h1>
+          <p class="title">Robotics Engineering Student<br>Enthusiast Researcher</p>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-item email-copy" onclick="copyEmail()" title="点击复制邮箱地址">
+            <span class="contact-icon">📧</span>
+            <span class="contact-link">Email</span>
+            <div class="copy-tooltip" id="email-tooltip">已复制到剪贴板！</div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🐙</span>
+            <a href="https://github.com/zhangjiaxuan-Xuan" target="_blank" class="contact-link">GitHub</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🏫</span>
+            <span class="contact-link">
+              <span class="lang-content active" data-lang="zh">南方科技大学</span>
+              <span class="lang-content" data-lang="en">SUSTech</span>
+            </span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span class="contact-link">
+              <span class="lang-content active" data-lang="zh">深圳，中国</span>
+              <span class="lang-content" data-lang="en">Shenzhen, China</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧详细信息面板 -->
+      <div class="right-panel">
+        <!-- 中文内容 -->
+        <div class="lang-content active" data-lang="zh">
+          <div class="section">
+            <h2 class="section-title">🔬 研究方向</h2>
+            <div class="research-area">
+              <h3>类人机器人智能</h3>
+              <p>寻找新的人工智能范式，脱离现有端到端模型的限制，实现类人思维与能力。</p>
+            </div>
+            <div class="research-area">
+              <h3>人机交互</h3>
+              <p>以人为本，让与人互动的机器人系统作为单独的个体辅助人类，而非人类的模仿者。</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section-title">🎓 教育经历</h2>
+            <div class="education-item">
+              <h3>南方科技大学</h3>
+              <p><strong>机器人工程</strong> | 本科在读 | 2023.09 - 至今</p>
+            </div>
+            <div class="education-item">
+              <h3>西湖大学 Milab</h3>
+              <p><strong>实习生</strong> | 2025.06 - 2025.09</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section-title">� 升学计划</h2>
+            <div class="research-area">
+              <p>申请2027年秋季入学的美国全奖博士项目，目标院校包括斯坦福大学、加州大学伯克利分校、麻省理工学院等。</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section-title">📚 学术发表</h2>
+            <div class="publication-item">
+              <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
+              <p><strong>作者：</strong><strong>Jiaxuan Zhang</strong>, Han Zhao, Wenxuan Song, Pengxiang Ding, Donglin Wang</p>
+              <p><a href="https://arxiv.org/abs/2510.14902" target="_blank" class="publication-link">📖 arXiv 论文链接</a> | <a href="https://vla-2.github.io/" target="_blank" class="publication-link">🌐 项目网站</a></p>
+              <button class="abstract-btn" onclick="toggleAbstract('abstract-zh-1')">展开摘要 ▼</button>
+              <div class="abstract-content" id="abstract-zh-1">
+                <p><strong>摘要：</strong>当前的视觉-语言-动作(VLA)模型在大规模机器人数据上预训练，展现出强大的多任务能力，并能很好地泛化到操作任务中视觉和语言指令的变化。然而，当面对训练数据之外的物体概念时，如数据集中未见过的物体描述和纹理，其成功率显著下降。为了解决这个问题，我们提出了一个新颖的智能体框架VLA²，该框架以OpenVLA作为执行骨干，有效利用网络检索和物体检测等外部模块为VLA提供关于目标物体的视觉和文本知识。这种方法缓解了处理分布外物体时的泛化失败问题。基于LIBERO仿真环境，我们引入了新颖的物体和物体描述，构建了具有三个难度级别的新评估基准来测试我们方法的有效性。我们的框架在设计的困难级别泛化基准上成功超越了当前最先进的模型。与独立的OpenVLA基线相比，VLA²在困难级别基准中实现了44.2%的成功率提升，在所有定制环境中平均提升20.2%，且在域内任务上没有性能下降。</p>
+              </div>
+            </div>
+            <div class="publication-item">
+              <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
+              <p><strong>会议：</strong>IROS 2025</p>
+              <p><strong>作者：</strong><strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
+              <p><a href="https://arxiv.org/abs/2510.24676" target="_blank" class="publication-link">📖 arXiv 论文链接</a></p>
+              <button class="abstract-btn" onclick="toggleAbstract('abstract-zh-2')">展开摘要 ▼</button>
+              <div class="abstract-content" id="abstract-zh-2">
+                <p><strong>摘要：</strong>对于使用动力大腿假肢的截肢者来说，导航障碍物或复杂地形仍然是一个挑战。本研究通过使用健康踝关节上的惯性传感器来指导越障运动来解决这个问题。遗传算法计算最优的神经网络结构来预测大腿和膝关节所需的角度。步态进展预测算法确定假肢膝关节电机的驱动角度指数，最终定义必要的大腿和膝关节角度以及步态进展。结果表明，当添加到大腿角度数据的高斯噪声标准差小于1时，该方法能有效消除噪声干扰，在150 Hz下实现100%的步态相位估计准确性，大腿角度预测误差为8.71%，膝角度预测误差为6.78%。这些发现证明了该方法准确预测步态进展和关节角度的能力，为动力大腿假肢的障碍物协商提供了重要的实用价值。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 英文内容 -->
+        <div class="lang-content" data-lang="en">
+          <div class="section">
+            <h2 class="section-title">🔬 Research Interests</h2>
+            <div class="research-area">
+              <h3>Human-like Robot Intelligence</h3>
+              <p>Exploring new AI paradigms beyond current end-to-end models to achieve human-like thinking and capabilities.</p>
+            </div>
+            <div class="research-area">
+              <h3>Human-Robot Interaction</h3>
+              <p>Human-centered approach where interactive robots serve as independent entities to assist humans, rather than human imitators.</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section-title">🎓 Education</h2>
+            <div class="education-item">
+              <h3>Southern University of Science and Technology</h3>
+              <p><strong>Robotics Engineering</strong> | Undergraduate | Sep 2023 - Present</p>
+            </div>
+            <div class="education-item">
+              <h3>Westlake University, Milab</h3>
+              <p><strong>Research Intern</strong> | Jun 2025 - Sep 2025</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section-title">🚀 Academic Plans</h2>
+            <div class="research-area">
+              <p>Applying for fully-funded PhD programs in the US starting Fall 2027, targeting institutions including Stanford University, UC Berkeley, MIT, and others.</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 class="section-title">📚 Publications</h2>
+            <div class="publication-item">
+              <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
+              <p><strong>Authors:</strong> <strong>Jiaxuan Zhang</strong>, Han Zhao, Wenxuan Song, Pengxiang Ding, Donglin Wang</p>
+              <p><a href="https://arxiv.org/abs/2510.14902" target="_blank" class="publication-link">📖 arXiv Paper</a> | <a href="https://vla-2.github.io/" target="_blank" class="publication-link">🌐 Project Website</a></p>
+              <button class="abstract-btn" onclick="toggleAbstract('abstract-en-1')">Show Abstract ▼</button>
+              <div class="abstract-content" id="abstract-en-1">
+                <p><strong>Abstract:</strong> Current vision-language-action (VLA) models, pre-trained on large-scale robotic data, exhibit strong multi-task capabilities and generalize well to variations in visual and language instructions for manipulation. However, their success rate drops significantly when faced with object concepts outside the training data, such as unseen object descriptions and textures in the dataset. To address this, we propose a novel agentic framework, VLA², which leverages OpenVLA as the execution backbone and effectively leverages external modules such as web retrieval and object detection to provide visual and textual knowledge about target objects to the VLA. This approach mitigates generalization failure when handling out-of-distribution objects. Based on the LIBERO simulation environment, we introduced novel objects and object descriptions to construct a new evaluation benchmark with three difficulty levels to test the effectiveness of our method. Our framework successfully outperformed the current state-of-the-art models on our designed hard-level generalization benchmark. Compared to the standalone OpenVLA baseline, VLA² achieves a 44.2% improvement in the success rate in the hard-level benchmark and an average improvement of 20.2% in all customized environments without any performance degradation on in-domain tasks.</p>
+              </div>
+            </div>
+            <div class="publication-item">
+              <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
+              <p><strong>Conference:</strong> IROS 2025</p>
+              <p><strong>Authors:</strong> <strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
+              <p><a href="https://arxiv.org/abs/2510.24676" target="_blank" class="publication-link">📖 arXiv Paper</a></p>
+              <button class="abstract-btn" onclick="toggleAbstract('abstract-en-2')">Show Abstract ▼</button>
+              <div class="abstract-content" id="abstract-en-2">
+                <p><strong>Abstract:</strong> For amputees with powered transfemoral prosthetics, navigating obstacles or complex terrain remains challenging. This study addresses this issue by using an inertial sensor on the sound ankle to guide obstacle-crossing movements. A genetic algorithm computes the optimal neural network structure to predict the required angles of the thigh and knee joints. A gait progression prediction algorithm determines the actuation angle index for the prosthetic knee motor, ultimately defining the necessary thigh and knee angles and gait progression. Results show that when the standard deviation of Gaussian noise added to the thigh angle data is less than 1, the method can effectively eliminate noise interference, achieving 100% accuracy in gait phase estimation under 150 Hz, with thigh angle prediction error being 8.71% and knee angle prediction error being 6.78%. These findings demonstrate the method's ability to accurately predict gait progression and joint angles, offering significant practical value for obstacle negotiation in powered transfemoral prosthetics.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchLanguage(lang) {
+      // 更新按钮状态
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+
+      // 切换内容显示
+      document.querySelectorAll('.lang-content').forEach(content => {
+        if (content.getAttribute('data-lang') === lang) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+
+      // 更新页面语言属性
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    }
+
+    function toggleAbstract(abstractId) {
+      const abstractContent = document.getElementById(abstractId);
+      const button = event.target;
+      
+      if (abstractContent.classList.contains('show')) {
+        abstractContent.classList.remove('show');
+        button.innerHTML = abstractId.includes('zh') ? '展开摘要 ▼' : 'Show Abstract ▼';
+      } else {
+        abstractContent.classList.add('show');
+        button.innerHTML = abstractId.includes('zh') ? '收起摘要 ▲' : 'Hide Abstract ▲';
+      }
+    }
+
+    function copyEmail() {
+      const email = '12313226@mail.sustech.edu.cn';
+      
+      // 使用现代的 Clipboard API
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(email).then(() => {
+          showTooltip();
+        }).catch(err => {
+          // 如果 Clipboard API 失败，使用传统方法
+          fallbackCopyTextToClipboard(email);
+        });
+      } else {
+        // 使用传统方法
+        fallbackCopyTextToClipboard(email);
+      }
+    }
+
+    function fallbackCopyTextToClipboard(text) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      
+      // 避免滚动到底部
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+      
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        showTooltip();
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    function showTooltip() {
+      const tooltip = document.getElementById('email-tooltip');
+      tooltip.classList.add('show');
+      
+      setTimeout(() => {
+        tooltip.classList.remove('show');
+      }, 2000);
+    }
+
+    // 页面加载时初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      // 默认显示中文
+      switchLanguage('zh');
+    });
+  </script>
 </body>
 </html>
