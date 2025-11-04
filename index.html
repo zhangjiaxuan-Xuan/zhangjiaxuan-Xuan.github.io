@@ -265,6 +265,28 @@
       background: rgba(255,255,255,0.3);
     }
     
+    .email-copy::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8em;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .email-copy:hover::before {
+      opacity: 1;
+    }
+    
     .copy-tooltip {
       position: absolute;
       top: -35px;
@@ -363,10 +385,16 @@
         </div>
 
         <div class="contact-info">
-          <div class="contact-item email-copy" onclick="copyEmail()" title="点击复制邮箱地址">
+          <div class="contact-item email-copy" onclick="copyEmail()" data-tooltip="点击复制邮箱地址">
             <span class="contact-icon">📧</span>
-            <span class="contact-link">Email</span>
-            <div class="copy-tooltip" id="email-tooltip">已复制到剪贴板！</div>
+            <span class="contact-link">
+              <span class="lang-content active" data-lang="zh">邮箱</span>
+              <span class="lang-content" data-lang="en">Email</span>
+            </span>
+            <div class="copy-tooltip" id="email-tooltip">
+              <span class="lang-content active" data-lang="zh">已复制到剪贴板！</span>
+              <span class="lang-content" data-lang="en">Copied to clipboard!</span>
+            </div>
           </div>
           <div class="contact-item">
             <span class="contact-icon">🐙</span>
@@ -374,10 +402,10 @@
           </div>
           <div class="contact-item">
             <span class="contact-icon">🏫</span>
-            <span class="contact-link">
+            <a href="https://www.sustech.edu.cn/" target="_blank" class="contact-link">
               <span class="lang-content active" data-lang="zh">南方科技大学</span>
               <span class="lang-content" data-lang="en">SUSTech</span>
-            </span>
+            </a>
           </div>
           <div class="contact-item">
             <span class="contact-icon">📍</span>
@@ -418,7 +446,7 @@
           </div>
 
           <div class="section">
-            <h2 class="section-title">� 升学计划</h2>
+            <h2 class="section-title">🚀 升学计划</h2>
             <div class="research-area">
               <p>申请2027年秋季入学的美国全奖博士项目，目标院校包括斯坦福大学、加州大学伯克利分校、麻省理工学院等。</p>
             </div>
@@ -442,7 +470,7 @@
               <p><a href="https://arxiv.org/abs/2510.24676" target="_blank" class="publication-link">📖 arXiv 论文链接</a></p>
               <button class="abstract-btn" onclick="toggleAbstract('abstract-zh-2')">展开摘要 ▼</button>
               <div class="abstract-content" id="abstract-zh-2">
-                <p><strong>摘要：</strong>对于使用动力大腿假肢的截肢者来说，导航障碍物或复杂地形仍然是一个挑战。本研究通过使用健康踝关节上的惯性传感器来指导越障运动来解决这个问题。遗传算法计算最优的神经网络结构来预测大腿和膝关节所需的角度。步态进展预测算法确定假肢膝关节电机的驱动角度指数，最终定义必要的大腿和膝关节角度以及步态进展。结果表明，当添加到大腿角度数据的高斯噪声标准差小于1时，该方法能有效消除噪声干扰，在150 Hz下实现100%的步态相位估计准确性，大腿角度预测误差为8.71%，膝角度预测误差为6.78%。这些发现证明了该方法准确预测步态进展和关节角度的能力，为动力大腿假肢的障碍物协商提供了重要的实用价值。</p>
+                <p><strong>摘要：</strong>对于使用动力大腿假肢的截肢者来说，跨越障碍物或复杂地形仍然是一个挑战。本研究通过使用健康踝关节上的惯性传感器来指导越障运动来解决这个问题。遗传算法计算最优的神经网络结构来预测大腿和膝关节所需的角度并适配步态进度预测算法。步态进度预测算法确定假肢膝关节电机的驱动角度指数，最终在进入假肢腾空摆动阶段之前计算出的大腿和膝关节角度，在摆动期间实时计算步态进度。结果表明，当添加到大腿角度数据的高斯噪声标准差小于1时，该步态进度预测方法能有效消除噪声干扰，在150 Hz下实现100%的步态相位进度估计准确性，大腿角度预测误差为8.71%，膝角度预测误差为6.78%。这些发现证明了该方法准确预测步态进展和关节角度的能力，为动力大腿假肢的障碍物跨越控制研究提供了重要的实用价值。</p>
               </div>
             </div>
           </div>
@@ -525,6 +553,14 @@
         }
       });
 
+      // 更新邮箱tooltip
+      const emailCopy = document.querySelector('.email-copy');
+      if (emailCopy) {
+        emailCopy.setAttribute('data-tooltip', 
+          lang === 'zh' ? '点击复制邮箱地址' : 'Click to copy email address'
+        );
+      }
+
       // 更新页面语言属性
       document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     }
@@ -584,6 +620,20 @@
 
     function showTooltip() {
       const tooltip = document.getElementById('email-tooltip');
+      
+      // 显示当前语言的提示
+      const currentLang = document.documentElement.lang === 'zh-CN' ? 'zh' : 'en';
+      const zhTooltip = tooltip.querySelector('[data-lang="zh"]');
+      const enTooltip = tooltip.querySelector('[data-lang="en"]');
+      
+      if (currentLang === 'zh') {
+        zhTooltip.classList.add('active');
+        enTooltip.classList.remove('active');
+      } else {
+        enTooltip.classList.add('active');
+        zhTooltip.classList.remove('active');
+      }
+      
       tooltip.classList.add('show');
       
       setTimeout(() => {
@@ -594,6 +644,10 @@
     // 页面加载时初始化
     document.addEventListener('DOMContentLoaded', function() {
       // 默认显示中文
+      const zhBtn = document.querySelector('.lang-btn[onclick*="zh"]');
+      if (zhBtn) {
+        zhBtn.classList.add('active');
+      }
       switchLanguage('zh');
     });
   </script>
