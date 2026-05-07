@@ -3,653 +3,337 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>张家瑄 - Zhang Jiaxuan</title>
+  <title>Jiaxuan Zhang - 张家瑄</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* Minimalist Markdown-like Theme */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --heading-color: #111111;
+      --link-color: #0366d6;
+      --link-hover: #0056b3;
+      --border-color: #eaecef;
+      --code-bg: #f6f8fa;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
     }
-    
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #333;
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
-      min-height: 100vh;
+      padding: 40px 20px;
+      margin: 0;
+      font-size: 16px;
     }
-    
+
     .container {
-      max-width: 1200px;
+      max-width: 850px;
       margin: 0 auto;
-      padding: 20px;
-      min-height: 100vh;
+    }
+
+    /* Header Section */
+    .header {
       display: flex;
-      align-items: center;
-    }
-    
-    .card {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      overflow: visible;
-      width: 100%;
-      position: relative;
-      min-height: 600px;
-      padding: 40px;
-    }
-    
-    .left-panel {
-      background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
-      color: #fff;
-      padding: 25px;
-      position: absolute;
-      top: 40px;
-      left: 40px;
-      width: 300px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(79, 172, 254, 0.3);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      z-index: 10;
-    }
-    
-    .profile-image {
-      width: 220px;
-      height: 180px;
-      border-radius: 15px;
-      object-fit: contain;
-      border: 3px solid rgba(255,255,255,0.3);
-      margin-bottom: 15px;
-    }
-    
-    .name {
-      font-size: 1.6em;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    
-    .title {
-      font-size: 0.9em;
-      opacity: 0.9;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 20px;
     }
-    
-    .contact-info {
-      width: 100%;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-      padding: 8px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 8px;
-      transition: background 0.3s ease;
-      font-size: 0.9em;
-    }
-    
-    .contact-item:hover {
-      background: rgba(255,255,255,0.2);
-    }
-    
-    .contact-icon {
-      margin-right: 10px;
-      font-size: 1em;
-    }
-    
-    .contact-link {
-      color: #fff;
-      text-decoration: none;
+
+    .header-text {
       flex: 1;
     }
-    
-    .right-panel {
-      padding: 20px 40px 40px 20px;
-      width: 100%;
-      overflow-y: auto;
+
+    h1, h2, h3 {
+      color: var(--heading-color);
+      font-weight: 600;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.25;
     }
-    
-    .lang-switch {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      z-index: 100;
+
+    h1 {
+      font-size: 2em;
+      margin-top: 0;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.3em;
     }
-    
-    .lang-btn {
-      background: rgba(255,255,255,0.9);
-      border: none;
-      padding: 8px 15px;
-      margin: 0 5px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
+
+    h2 {
+      font-size: 1.5em;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.3em;
     }
-    
-    .lang-btn.active {
-      background: #4facfe;
-      color: #fff;
+
+    h3 {
+      font-size: 1.25em;
     }
-    
-    .lang-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    p {
+      margin-top: 0;
+      margin-bottom: 16px;
     }
-    
-    .section {
-      margin-bottom: 35px;
-    }
-    
-    .section:first-child {
-      margin-left: 380px;
-      min-height: 420px;
-    }
-    
-    .section:nth-child(2) {
-      margin-left: 380px;
-      margin-top: -40px;
-    }
-    
-    .section:nth-child(3) {
-      margin-left: 200px;
-      margin-top: -30px;
-    }
-    
-    .section-title {
-      font-size: 1.8em;
-      color: #4facfe;
-      margin-bottom: 20px;
-      position: relative;
-      padding-bottom: 10px;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(45deg, #4facfe, #00f2fe);
-      border-radius: 2px;
-    }
-    
-    .research-area, .education-item, .publication-item {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      border-left: 4px solid #4facfe;
-    }
-    
-    .publication-link {
-      color: #4facfe;
+
+    a {
+      color: var(--link-color);
       text-decoration: none;
-      font-weight: 500;
     }
-    
-    .publication-link:hover {
+
+    a:hover {
       text-decoration: underline;
+      color: var(--link-hover);
+    }
+
+    img.profile-image {
+      width: 150px;
+      height: auto;
+      border-radius: 6px;
+      margin-left: 30px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      padding-left: 2em;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 0.25em;
+    }
+
+    /* Abstract Block */
+    details {
+      background-color: var(--code-bg);
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 0.95em;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--link-color);
     }
     
+    summary:hover {
+      color: var(--link-hover);
+    }
+
+    details p {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    /* Language Switcher */
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 20px;
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+    }
+
+    .lang-switch a {
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: var(--text-color);
+    }
+
+    .lang-switch a.active {
+      background-color: var(--heading-color);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .contact-links {
+      font-family: var(--font-mono);
+      font-size: 0.9em;
+      margin-bottom: 1.5em;
+    }
+
+    .contact-links a {
+      margin-right: 15px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+      }
+      img.profile-image {
+        margin-left: 0;
+        margin-bottom: 20px;
+        width: 120px;
+      }
+    }
+
     .lang-content {
       display: none;
     }
-    
     .lang-content.active {
       display: block;
     }
     
-    ul {
-      list-style: none;
-      padding-left: 0;
+    .pub-meta {
+      font-size: 0.95em;
+      color: #555;
     }
-    
-    li {
-      margin-bottom: 10px;
-      padding-left: 20px;
-      position: relative;
-    }
-    
-    li::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: #4facfe;
-      font-weight: bold;
-    }
-    
-    .abstract-btn {
-      background: #4facfe;
-      color: #fff;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9em;
-      margin-top: 10px;
-      transition: all 0.3s ease;
-    }
-    
-    .abstract-btn:hover {
-      background: #3d8bfe;
-      transform: translateY(-1px);
-    }
-    
-    .abstract-content {
-      display: none;
-      background: #f0f8ff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 10px;
-      border-left: 3px solid #4facfe;
-      line-height: 1.7;
-    }
-    
-    .abstract-content.show {
-      display: block;
-    }
-    
-    .email-copy {
-      cursor: pointer;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .email-copy:hover {
-      background: rgba(255,255,255,0.3);
-    }
-    
-    .email-copy::before {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: -40px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.7);
-      color: white;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.8em;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 1000;
-    }
-    
-    .email-copy:hover::before {
-      opacity: 1;
-    }
-    
-    .copy-tooltip {
-      position: absolute;
-      top: -35px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 0.8em;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    
-    .copy-tooltip.show {
-      opacity: 1;
-    }
-    
-    @media (max-width: 768px) {
-      .container {
-        padding: 10px;
-      }
-      
-      .card {
-        min-height: auto;
-        padding: 20px;
-      }
-      
-      .left-panel {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-        margin-bottom: 30px;
-        padding: 25px;
-      }
-      
-      .right-panel {
-        padding: 0;
-        width: 100%;
-      }
-      
-      .section:first-child,
-      .section:nth-child(2),
-      .section:nth-child(3) {
-        margin-left: 0;
-        min-height: auto;
-        margin-top: 0;
-      }
-      
-      .profile-image {
-        width: 100px;
-        height: 100px;
-      }
-      
-      .name {
-        font-size: 1.4em;
-      }
-      
-      .title {
-        font-size: 0.85em;
-      }
-      
-      .lang-switch {
-        position: relative;
-        top: 10px;
-        right: 10px;
-        text-align: center;
-        margin-bottom: 20px;
-      }
-    }
+
   </style>
 </head>
 <body>
+
+<div class="container">
   <div class="lang-switch">
-    <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
-    <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+    <a id="btn-en" onclick="switchLang('en')">EN</a> / 
+    <a id="btn-zh" onclick="switchLang('zh')">ZH</a>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <!-- 左侧个人信息面板 -->
-      <div class="left-panel">
-        <img src="static/images/self.jpg" alt="张家瑄" class="profile-image" onerror="this.style.display='none'">
+  <div class="header">
+    <img src="static/images/self.jpg" alt="Jiaxuan Zhang" class="profile-image" onerror="this.style.display='none'">
+    
+    <div class="header-text">
+      <!-- English Identity -->
+      <div class="lang-content en">
+        <h1>Jiaxuan Zhang (Joey)</h1>
+        <p><strong>Robotics Engineering Student | Enthusiast Researcher</strong></p>
+        <p>Southern University of Science and Technology (SUSTech), Shenzhen, China.</p>
         
-        <div class="lang-content active" data-lang="zh">
-          <h1 class="name">张家瑄</h1>
-          <p class="title">机器人工程本科生<br>喜欢科研的人</p>
-        </div>
-        
-        <div class="lang-content" data-lang="en">
-          <h1 class="name">Zhang Jiaxuan(Joey)</h1>
-          <p class="title">Robotics Engineering Student<br>Enthusiast Researcher</p>
-        </div>
-
-        <div class="contact-info">
-          <div class="contact-item email-copy" onclick="copyEmail()" data-tooltip="点击复制邮箱地址">
-            <span class="contact-icon">📧</span>
-            <span class="contact-link">
-              <span class="lang-content active" data-lang="zh">邮箱</span>
-              <span class="lang-content" data-lang="en">Email</span>
-            </span>
-            <div class="copy-tooltip" id="email-tooltip">
-              <span class="lang-content active" data-lang="zh">已复制到剪贴板！</span>
-              <span class="lang-content" data-lang="en">Copied to clipboard!</span>
-            </div>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">🐙</span>
-            <a href="https://github.com/zhangjiaxuan-Xuan" target="_blank" class="contact-link">GitHub</a>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">🏫</span>
-            <a href="https://www.sustech.edu.cn/" target="_blank" class="contact-link">
-              <span class="lang-content active" data-lang="zh">南方科技大学</span>
-              <span class="lang-content" data-lang="en">SUSTech</span>
-            </a>
-          </div>
-          <div class="contact-item">
-            <span class="contact-icon">📍</span>
-            <span class="contact-link">
-              <span class="lang-content active" data-lang="zh">深圳，中国</span>
-              <span class="lang-content" data-lang="en">Shenzhen, China</span>
-            </span>
-          </div>
+        <div class="contact-links">
+          <a href="mailto:12313226@mail.sustech.edu.cn">Email</a>
+          <a href="https://github.com/zhangjiaxuan-Xuan" target="_blank">GitHub</a>
         </div>
       </div>
-
-      <!-- 右侧详细信息面板 -->
-      <div class="right-panel">
-        <!-- 中文内容 -->
-        <div class="lang-content active" data-lang="zh">
-          <div class="section">
-            <h2 class="section-title">🔬 研究方向</h2>
-            <div class="research-area">
-              <h3>类人机器人智能</h3>
-              <p>寻找新的人工智能范式，脱离现有端到端模型的限制，实现类人思维与能力。</p>
-            </div>
-            <div class="research-area">
-              <h3>人机交互</h3>
-              <p>以人为本，让与人互动的机器人系统作为单独的个体辅助人类，而非人类的模仿者。</p>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">🎓 教育经历</h2>
-            <div class="education-item">
-              <h3>南方科技大学</h3>
-              <p><strong>机器人工程</strong> | 本科在读 | 2023.09 - 至今</p>
-            </div>
-            <div class="education-item">
-              <h3>西湖大学 Milab</h3>
-              <p><strong>实习生</strong> | 2025.06 - 2025.09</p>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">🚀 升学计划</h2>
-            <div class="research-area">
-              <p>申请2027年秋季入学的美国全奖博士项目，目标院校包括斯坦福大学、加州大学伯克利分校、麻省理工学院等。</p>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">📚 学术发表</h2>
-            <div class="publication-item">
-              <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
-              <p><strong>作者：</strong> Han Zhao*, <strong>Jiaxuan Zhang</strong>*, Wenxuan Song, Pengxiang Ding, Donglin Wang (*: equal contribution)</p>
-              <p><a href="https://arxiv.org/abs/2510.14902" target="_blank" class="publication-link">📖 arXiv 论文链接</a> | <a href="https://vla-2.github.io/" target="_blank" class="publication-link">🌐 项目网站</a></p>
-              <button class="abstract-btn" onclick="toggleAbstract('abstract-zh-1')">展开摘要 ▼</button>
-              <div class="abstract-content" id="abstract-zh-1">
-                <p><strong>摘要：</strong>当前的视觉-语言-动作(VLA)模型在大规模机器人数据上预训练，展现出强大的多任务能力，并能很好地泛化到操作任务中视觉和语言指令的变化。然而，当面对训练数据之外的物体概念时，如数据集中未见过的物体描述和纹理，其成功率显著下降。为了解决这个问题，我们提出了一个新颖的智能体框架VLA²，该框架以OpenVLA作为执行骨干，有效利用网络检索和物体检测等外部模块为VLA提供关于目标物体的视觉和文本知识。这种方法缓解了处理分布外物体时的泛化失败问题。基于LIBERO仿真环境，我们引入了新颖的物体和物体描述，构建了具有三个难度级别的新评估基准来测试我们方法的有效性。我们的框架在设计的困难级别泛化基准上成功超越了当前最先进的模型。与独立的OpenVLA基线相比，VLA²在困难级别基准中实现了44.2%的成功率提升，在所有定制环境中平均提升20.2%，且在域内任务上没有性能下降。</p>
-              </div>
-            </div>
-            <div class="publication-item">
-              <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
-              <p><strong>会议：</strong>IROS 2025</p>
-              <p><strong>作者：</strong><strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
-              <p><a href="https://arxiv.org/abs/2510.24676" target="_blank" class="publication-link">📖 arXiv 论文链接</a></p>
-              <button class="abstract-btn" onclick="toggleAbstract('abstract-zh-2')">展开摘要 ▼</button>
-              <div class="abstract-content" id="abstract-zh-2">
-                <p><strong>摘要：</strong>对于使用动力大腿假肢的截肢者来说，跨越障碍物或复杂地形仍然是一个挑战。本研究通过使用健康踝关节上的惯性传感器来指导越障运动来解决这个问题。遗传算法计算最优的神经网络结构来预测大腿和膝关节所需的角度并适配步态进度预测算法。步态进度预测算法确定假肢膝关节电机的驱动角度指数，最终在进入假肢腾空摆动阶段之前计算出的大腿和膝关节角度，在摆动期间实时计算步态进度。结果表明，当添加到大腿角度数据的高斯噪声标准差小于1时，该步态进度预测方法能有效消除噪声干扰，在150 Hz下实现100%的步态相位进度估计准确性，大腿角度预测误差为8.71%，膝角度预测误差为6.78%。这些发现证明了该方法准确预测步态进展和关节角度的能力，为动力大腿假肢的障碍物跨越控制研究提供了重要的实用价值。</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 英文内容 -->
-        <div class="lang-content" data-lang="en">
-          <div class="section">
-            <h2 class="section-title">🔬 Research Interests</h2>
-            <div class="research-area">
-              <h3>Human-like Robot Intelligence</h3>
-              <p>Exploring new AI paradigms beyond current end-to-end models to achieve human-like thinking and capabilities.</p>
-            </div>
-            <div class="research-area">
-              <h3>Human-Robot Interaction</h3>
-              <p>Human-centered approach where interactive robots serve as independent entities to assist humans, rather than human imitators.</p>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">🎓 Education</h2>
-            <div class="education-item">
-              <h3>Southern University of Science and Technology</h3>
-              <p><strong>Robotics Engineering</strong> | Undergraduate | Sep 2023 - Present</p>
-            </div>
-            <div class="education-item">
-              <h3>Westlake University, Milab</h3>
-              <p><strong>Research Intern</strong> | Jun 2025 - Sep 2025</p>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">🚀 Academic Plans</h2>
-            <div class="research-area">
-              <p>Applying for fully-funded PhD programs in the US starting Fall 2027, targeting institutions including Stanford University, UC Berkeley, MIT, and others.</p>
-            </div>
-          </div>
-
-          <div class="section">
-            <h2 class="section-title">📚 Publications</h2>
-            <div class="publication-item">
-              <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
-              <p><strong>Authors:</strong> Han Zhao*, <strong>Jiaxuan Zhang</strong>*, Wenxuan Song, Pengxiang Ding, Donglin Wang (*: equal contribution)</p>
-              <p><a href="https://arxiv.org/abs/2510.14902" target="_blank" class="publication-link">📖 arXiv Paper</a> | <a href="https://vla-2.github.io/" target="_blank" class="publication-link">🌐 Project Website</a></p>
-              <button class="abstract-btn" onclick="toggleAbstract('abstract-en-1')">Show Abstract ▼</button>
-              <div class="abstract-content" id="abstract-en-1">
-                <p><strong>Abstract:</strong> Current vision-language-action (VLA) models, pre-trained on large-scale robotic data, exhibit strong multi-task capabilities and generalize well to variations in visual and language instructions for manipulation. However, their success rate drops significantly when faced with object concepts outside the training data, such as unseen object descriptions and textures in the dataset. To address this, we propose a novel agentic framework, VLA², which leverages OpenVLA as the execution backbone and effectively leverages external modules such as web retrieval and object detection to provide visual and textual knowledge about target objects to the VLA. This approach mitigates generalization failure when handling out-of-distribution objects. Based on the LIBERO simulation environment, we introduced novel objects and object descriptions to construct a new evaluation benchmark with three difficulty levels to test the effectiveness of our method. Our framework successfully outperformed the current state-of-the-art models on our designed hard-level generalization benchmark. Compared to the standalone OpenVLA baseline, VLA² achieves a 44.2% improvement in the success rate in the hard-level benchmark and an average improvement of 20.2% in all customized environments without any performance degradation on in-domain tasks.</p>
-              </div>
-            </div>
-            <div class="publication-item">
-              <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
-              <p><strong>Conference:</strong> IROS 2025</p>
-              <p><strong>Authors:</strong> <strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
-              <p><a href="https://arxiv.org/abs/2510.24676" target="_blank" class="publication-link">📖 arXiv Paper</a></p>
-              <button class="abstract-btn" onclick="toggleAbstract('abstract-en-2')">Show Abstract ▼</button>
-              <div class="abstract-content" id="abstract-en-2">
-                <p><strong>Abstract:</strong> For amputees with powered transfemoral prosthetics, navigating obstacles or complex terrain remains challenging. This study addresses this issue by using an inertial sensor on the sound ankle to guide obstacle-crossing movements. A genetic algorithm computes the optimal neural network structure to predict the required angles of the thigh and knee joints. A gait progression prediction algorithm determines the actuation angle index for the prosthetic knee motor, ultimately defining the necessary thigh and knee angles and gait progression. Results show that when the standard deviation of Gaussian noise added to the thigh angle data is less than 1, the method can effectively eliminate noise interference, achieving 100% accuracy in gait phase estimation under 150 Hz, with thigh angle prediction error being 8.71% and knee angle prediction error being 6.78%. These findings demonstrate the method's ability to accurately predict gait progression and joint angles, offering significant practical value for obstacle negotiation in powered transfemoral prosthetics.</p>
-              </div>
-            </div>
-          </div>
+      
+      <!-- Chinese Identity -->
+      <div class="lang-content zh">
+        <h1>张家瑄</h1>
+        <p><strong>机器人工程本科生 | 科研爱好者</strong></p>
+        <p>南方科技大学 (SUSTech)，中国 深圳</p>
+        
+        <div class="contact-links">
+          <a href="mailto:12313226@mail.sustech.edu.cn">Email</a>
+          <a href="https://github.com/zhangjiaxuan-Xuan" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
   </div>
 
-  <script>
-    function switchLanguage(lang) {
-      // 更新按钮状态
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      event.target.classList.add('active');
+  <!-- English Content -->
+  <div class="lang-content en">
+    <h2>Research Interests</h2>
+    <ul>
+      <li><strong>Human-like Robot Intelligence</strong>: Exploring new AI paradigms beyond current end-to-end models to achieve human-like thinking and capabilities.</li>
+      <li><strong>Human-Robot Interaction</strong>: Human-centered approach where interactive robots serve as independent entities to assist humans, rather than human imitators.</li>
+    </ul>
 
-      // 切换内容显示
-      document.querySelectorAll('.lang-content').forEach(content => {
-        if (content.getAttribute('data-lang') === lang) {
-          content.classList.add('active');
-        } else {
-          content.classList.remove('active');
-        }
-      });
+    <h2>Education & Experience</h2>
+    <ul>
+      <li><strong>Southern University of Science and Technology</strong> (Sep 2023 - Present)<br>Undergraduate in Robotics Engineering</li>
+      <li><strong>Westlake University, Milab</strong> (Jun 2025 - Sep 2025)<br>Research Intern</li>
+    </ul>
 
-      // 更新邮箱tooltip
-      const emailCopy = document.querySelector('.email-copy');
-      if (emailCopy) {
-        emailCopy.setAttribute('data-tooltip', 
-          lang === 'zh' ? '点击复制邮箱地址' : 'Click to copy email address'
-        );
-      }
+    <h2>Academic Plans</h2>
+    <p>Applying for fully-funded PhD programs in the US starting Fall 2027, targeting institutions including Stanford University, UC Berkeley, MIT, and others.</p>
 
-      // 更新页面语言属性
-      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-    }
+    <h2>Publications</h2>
+    
+    <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
+    <p class="pub-meta">Han Zhao*, <strong>Jiaxuan Zhang</strong>*, Wenxuan Song, Pengxiang Ding, Donglin Wang (*: equal contribution)</p>
+    <p>
+      <a href="https://arxiv.org/abs/2510.14902" target="_blank">[arXiv]</a> 
+      <a href="https://vla-2.github.io/" target="_blank">[Project Website]</a>
+    </p>
+    <details>
+      <summary>Abstract</summary>
+      <p>Current vision-language-action (VLA) models, pre-trained on large-scale robotic data, exhibit strong multi-task capabilities and generalize well to variations in visual and language instructions for manipulation. However, their success rate drops significantly when faced with object concepts outside the training data, such as unseen object descriptions and textures in the dataset. To address this, we propose a novel agentic framework, VLA², which leverages OpenVLA as the execution backbone and effectively leverages external modules such as web retrieval and object detection to provide visual and textual knowledge about target objects to the VLA. This approach mitigates generalization failure when handling out-of-distribution objects. Based on the LIBERO simulation environment, we introduced novel objects and object descriptions to construct a new evaluation benchmark with three difficulty levels to test the effectiveness of our method. Our framework successfully outperformed the current state-of-the-art models on our designed hard-level generalization benchmark. Compared to the standalone OpenVLA baseline, VLA² achieves a 44.2% improvement in the success rate in the hard-level benchmark and an average improvement of 20.2% in all customized environments without any performance degradation on in-domain tasks.</p>
+    </details>
 
-    function toggleAbstract(abstractId) {
-      const abstractContent = document.getElementById(abstractId);
-      const button = event.target;
-      
-      if (abstractContent.classList.contains('show')) {
-        abstractContent.classList.remove('show');
-        button.innerHTML = abstractId.includes('zh') ? '展开摘要 ▼' : 'Show Abstract ▼';
-      } else {
-        abstractContent.classList.add('show');
-        button.innerHTML = abstractId.includes('zh') ? '收起摘要 ▲' : 'Hide Abstract ▲';
-      }
-    }
+    <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
+    <p class="pub-meta"><strong>IROS 2025</strong> | <strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
+    <p><a href="https://arxiv.org/abs/2510.24676" target="_blank">[arXiv]</a></p>
+    <details>
+      <summary>Abstract</summary>
+      <p>For amputees with powered transfemoral prosthetics, navigating obstacles or complex terrain remains challenging. This study addresses this issue by using an inertial sensor on the sound ankle to guide obstacle-crossing movements. A genetic algorithm computes the optimal neural network structure to predict the required angles of the thigh and knee joints. A gait progression prediction algorithm determines the actuation angle index for the prosthetic knee motor, ultimately defining the necessary thigh and knee angles and gait progression. Results show that when the standard deviation of Gaussian noise added to the thigh angle data is less than 1, the method can effectively eliminate noise interference, achieving 100% accuracy in gait phase estimation under 150 Hz, with thigh angle prediction error being 8.71% and knee angle prediction error being 6.78%. These findings demonstrate the method's ability to accurately predict gait progression and joint angles, offering significant practical value for obstacle negotiation in powered transfemoral prosthetics.</p>
+    </details>
+  </div>
 
-    function copyEmail() {
-      const email = '12313226@mail.sustech.edu.cn';
-      
-      // 使用现代的 Clipboard API
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(email).then(() => {
-          showTooltip();
-        }).catch(err => {
-          // 如果 Clipboard API 失败，使用传统方法
-          fallbackCopyTextToClipboard(email);
-        });
-      } else {
-        // 使用传统方法
-        fallbackCopyTextToClipboard(email);
-      }
-    }
+  <!-- Chinese Content -->
+  <div class="lang-content zh">
+    <h2>研究方向 (Research Interests)</h2>
+    <ul>
+      <li><strong>类人机器人智能</strong>: 寻找新的人工智能范式，脱离现有端到端模型的限制，实现类人思维与能力。</li>
+      <li><strong>人机交互</strong>: 以人为本，让与人互动的机器人系统作为单独的个体辅助人类，而非人类的模仿者。</li>
+    </ul>
 
-    function fallbackCopyTextToClipboard(text) {
-      const textArea = document.createElement("textarea");
-      textArea.value = text;
-      
-      // 避免滚动到底部
-      textArea.style.top = "0";
-      textArea.style.left = "0";
-      textArea.style.position = "fixed";
-      
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      
-      try {
-        document.execCommand('copy');
-        showTooltip();
-      } catch (err) {
-        console.error('Fallback: Oops, unable to copy', err);
-      }
-      
-      document.body.removeChild(textArea);
-    }
+    <h2>教育与经历 (Education & Experience)</h2>
+    <ul>
+      <li><strong>南方科技大学</strong> (2023.09 - 至今)<br>机器人工程 本科在读</li>
+      <li><strong>西湖大学 Milab</strong> (2025.06 - 2025.09)<br>实习生</li>
+    </ul>
 
-    function showTooltip() {
-      const tooltip = document.getElementById('email-tooltip');
-      
-      // 显示当前语言的提示
-      const currentLang = document.documentElement.lang === 'zh-CN' ? 'zh' : 'en';
-      const zhTooltip = tooltip.querySelector('[data-lang="zh"]');
-      const enTooltip = tooltip.querySelector('[data-lang="en"]');
-      
-      if (currentLang === 'zh') {
-        zhTooltip.classList.add('active');
-        enTooltip.classList.remove('active');
-      } else {
-        enTooltip.classList.add('active');
-        zhTooltip.classList.remove('active');
-      }
-      
-      tooltip.classList.add('show');
-      
-      setTimeout(() => {
-        tooltip.classList.remove('show');
-      }, 2000);
-    }
+    <h2>升学计划 (Academic Plans)</h2>
+    <p>申请 2027 年秋季入学的美国全奖博士项目，目标院校包括斯坦福大学、加州大学伯克利分校、麻省理工学院等。</p>
 
-    // 页面加载时初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      // 默认显示中文
-      const zhBtn = document.querySelector('.lang-btn[onclick*="zh"]');
-      if (zhBtn) {
-        zhBtn.classList.add('active');
-      }
-      switchLanguage('zh');
+    <h2>学术发表 (Publications)</h2>
+    
+    <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
+    <p class="pub-meta">Han Zhao*, <strong>Jiaxuan Zhang</strong>*, Wenxuan Song, Pengxiang Ding, Donglin Wang (*: 共同一作)</p>
+    <p>
+      <a href="https://arxiv.org/abs/2510.14902" target="_blank">[arXiv]</a> 
+      <a href="https://vla-2.github.io/" target="_blank">[项目网站]</a>
+    </p>
+    <details>
+      <summary>展开摘要</summary>
+      <p>当前的视觉-语言-动作(VLA)模型在大规模机器人数据上预训练，展现出强大的多任务能力，并能很好地泛化到操作任务中视觉和语言指令的变化。然而，当面对训练数据之外的物体概念时，如数据集中未见过的物体描述和纹理，其成功率显著下降。为了解决这个问题，我们提出了一个新颖的智能体框架VLA²，该框架以OpenVLA作为执行骨干，有效利用网络检索和物体检测等外部模块为VLA提供关于目标物体的视觉和文本知识。这种方法缓解了处理分布外物体时的泛化失败问题。基于LIBERO仿真环境，我们引入了新颖的物体和物体描述，构建了具有三个难度级别的新评估基准来测试我们方法的有效性。我们的框架在设计的困难级别泛化基准上成功超越了当前最先进的模型。与独立的OpenVLA基线相比，VLA²在困难级别基准中实现了44.2%的成功率提升，在所有定制环境中平均提升20.2%，且在域内任务上没有性能下降。</p>
+    </details>
+
+    <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
+    <p class="pub-meta"><strong>IROS 2025</strong> | <strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
+    <p><a href="https://arxiv.org/abs/2510.24676" target="_blank">[arXiv]</a></p>
+    <details>
+      <summary>展开摘要</summary>
+      <p>对于使用动力大腿假肢的截肢者来说，跨越障碍物或复杂地形仍然是一个挑战。本研究通过使用健康踝关节上的惯性传感器来指导越障运动来解决这个问题。遗传算法计算最优的神经网络结构来预测大腿和膝关节所需的角度并适配步态进度预测算法。步态进度预测算法确定假肢膝关节电机的驱动角度指数，最终在进入假肢腾空摆动阶段之前计算出的大腿和膝关节角度，在摆动期间实时计算步态进度。结果表明，当添加到大腿角度数据的高斯噪声标准差小于1时，该步态进度预测方法能有效消除噪声干扰，在150 Hz下实现100%的步态相位进度估计准确性，大腿角度预测误差为8.71%，膝角度预测误差为6.78%。这些发现证明了该方法准确预测步态进展和关节角度的能力，为动力大腿假肢的障碍物跨越控制研究提供了重要的实用价值。</p>
+    </details>
+  </div>
+</div>
+
+<script>
+  function switchLang(lang) {
+    // 隐藏所有其它语言的块
+    document.querySelectorAll('.lang-content').forEach(el => {
+      el.classList.remove('active');
     });
-  </script>
+    // 显示选定语言的块
+    document.querySelectorAll('.lang-content.' + lang).forEach(el => {
+      el.classList.add('active');
+    });
+    
+    // 更新按钮高亮
+    document.getElementById('btn-en').classList.remove('active');
+    document.getElementById('btn-zh').classList.remove('active');
+    document.getElementById('btn-' + lang).classList.add('active');
+    
+    // 设置 html lang 属性
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  }
+
+  // 默认语言检测或设置
+  window.onload = () => {
+    // 优先判断浏览器语言，如果是中文则默认中文，否则英文
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang.includes('zh')) {
+      switchLang('zh');
+    } else {
+      switchLang('en');
+    }
+  }
+</script>
+
 </body>
 </html>
