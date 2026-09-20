@@ -169,11 +169,26 @@
     }
     .publication h3 { margin-top: 0; }
     .publication-preview {
+      position: relative;
+      z-index: 0;
       display: block;
       padding: 8px;
       border: 1px solid var(--border-color);
       border-radius: 8px;
       background: #fff;
+      transform-origin: left center;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+    @media (hover: hover) and (pointer: fine) and (min-width: 701px) {
+      .publication-preview:hover,
+      .publication-preview:focus-visible {
+        z-index: 10;
+        transform: scale(1.65);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .publication-preview { transition: none; }
     }
     .publication-preview img { display: block; width: 100%; height: auto; }
     .publication details { margin-bottom: 0; }
@@ -298,8 +313,8 @@
     </article>
 
     <article class="publication">
-      <a class="publication-preview" href="static/images/gait-method.png" target="_blank" rel="noopener noreferrer" aria-label="View gait method overview">
-        <img src="static/images/gait-method.png" alt="gait method overview" loading="lazy">
+      <a class="publication-preview" href="static/images/gait-fig4.png" target="_blank" rel="noopener noreferrer" aria-label="View gait method overview">
+        <img src="static/images/gait-fig4.png" alt="gait method overview" loading="lazy">
       </a>
       <div class="publication-body">
     <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
@@ -366,8 +381,8 @@
     </article>
 
     <article class="publication">
-      <a class="publication-preview" href="static/images/gait-method.png" target="_blank" rel="noopener noreferrer" aria-label="View gait method overview">
-        <img src="static/images/gait-method.png" alt="gait method overview" loading="lazy">
+      <a class="publication-preview" href="static/images/gait-fig4.png" target="_blank" rel="noopener noreferrer" aria-label="View gait method overview">
+        <img src="static/images/gait-fig4.png" alt="gait method overview" loading="lazy">
       </a>
       <div class="publication-body">
     <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
