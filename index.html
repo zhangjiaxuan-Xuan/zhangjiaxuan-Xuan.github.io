@@ -160,6 +160,27 @@
       margin-right: 15px;
     }
 
+    .publication {
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      margin: 28px 0;
+    }
+    .publication h3 { margin-top: 0; }
+    .publication-preview {
+      display: block;
+      padding: 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #fff;
+    }
+    .publication-preview img { display: block; width: 100%; height: auto; }
+    .publication details { margin-bottom: 0; }
+    @media (max-width: 700px) {
+      .publication { grid-template-columns: 1fr; gap: 16px; }
+      .publication-preview { width: min(100%, 420px); box-sizing: border-box; }
+    }
     /* Responsive */
     @media (max-width: 600px) {
       .header {
@@ -242,6 +263,11 @@
     </ul>
 
     <h2>Publications</h2>
+    <article class="publication">
+      <a class="publication-preview" href="static/images/traceflow-method.png" target="_blank" rel="noopener noreferrer" aria-label="View traceflow method overview">
+        <img src="static/images/traceflow-method.png" alt="traceflow method overview" loading="lazy">
+      </a>
+      <div class="publication-body">
     <h3>TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces</h3>
     <p class="pub-meta"><strong>Jiaxuan Zhang</strong>, Ruizhe Liu, Yu Zhang, Yanchao Yang · arXiv preprint, 2026</p>
     <p><a href="https://arxiv.org/abs/2609.20646" target="_blank" rel="noopener noreferrer">[arXiv]</a>
@@ -250,7 +276,14 @@
       <a href="https://modelscope.ai/models/JoeyXuan/traceflow-models" target="_blank" rel="noopener noreferrer">[Models]</a>
       <a href="https://www.modelscope.ai/datasets/JoeyXuan/traceflow-realworld" target="_blank" rel="noopener noreferrer">[Real-world Data]</a></p>
     <details><summary>Summary</summary><p>TraceFlow turns progress-aligned successful and failed action traces into bounded early guidance for a frozen flow-matching action expert. Its TraceBank starts from task-training traces and can stack the robot's own deployment rollouts using only terminal success/failure labels, without policy weight updates or a learned critic. Simulation and real-robot experiments show task-dependent gains; stacking benefits are finite rather than monotonic.</p></details>
+      </div>
+    </article>
     
+    <article class="publication">
+      <a class="publication-preview" href="static/images/vla2-method.png" target="_blank" rel="noopener noreferrer" aria-label="View vla2 method overview">
+        <img src="static/images/vla2-method.png" alt="vla2 method overview" loading="lazy">
+      </a>
+      <div class="publication-body">
     <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
     <p class="pub-meta">Han Zhao*, <strong>Jiaxuan Zhang</strong>*, Wenxuan Song, Pengxiang Ding, Donglin Wang (*: equal contribution)</p>
     <p>
@@ -261,7 +294,14 @@
       <summary>Abstract</summary>
       <p>Current vision-language-action (VLA) models, pre-trained on large-scale robotic data, exhibit strong multi-task capabilities and generalize well to variations in visual and language instructions for manipulation. However, their success rate drops significantly when faced with object concepts outside the training data, such as unseen object descriptions and textures in the dataset. To address this, we propose a novel agentic framework, VLA², which leverages OpenVLA as the execution backbone and effectively leverages external modules such as web retrieval and object detection to provide visual and textual knowledge about target objects to the VLA. This approach mitigates generalization failure when handling out-of-distribution objects. Based on the LIBERO simulation environment, we introduced novel objects and object descriptions to construct a new evaluation benchmark with three difficulty levels to test the effectiveness of our method. Our framework successfully outperformed the current state-of-the-art models on our designed hard-level generalization benchmark. Compared to the standalone OpenVLA baseline, VLA² achieves a 44.2% improvement in the success rate in the hard-level benchmark and an average improvement of 20.2% in all customized environments without any performance degradation on in-domain tasks.</p>
     </details>
+      </div>
+    </article>
 
+    <article class="publication">
+      <a class="publication-preview" href="static/images/gait-method.png" target="_blank" rel="noopener noreferrer" aria-label="View gait method overview">
+        <img src="static/images/gait-method.png" alt="gait method overview" loading="lazy">
+      </a>
+      <div class="publication-body">
     <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
     <p class="pub-meta"><strong>IROS 2025</strong> | <strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
     <p><a href="https://arxiv.org/abs/2510.24676" target="_blank">[arXiv]</a></p>
@@ -269,6 +309,8 @@
       <summary>Abstract</summary>
       <p>For amputees with powered transfemoral prosthetics, navigating obstacles or complex terrain remains challenging. This study addresses this issue by using an inertial sensor on the sound ankle to guide obstacle-crossing movements. A genetic algorithm computes the optimal neural network structure to predict the required angles of the thigh and knee joints. A gait progression prediction algorithm determines the actuation angle index for the prosthetic knee motor, ultimately defining the necessary thigh and knee angles and gait progression. Results show that when the standard deviation of Gaussian noise added to the thigh angle data is less than 1, the method can effectively eliminate noise interference, achieving 100% accuracy in gait phase estimation under 150 Hz, with thigh angle prediction error being 8.71% and knee angle prediction error being 6.78%. These findings demonstrate the method's ability to accurately predict gait progression and joint angles, offering significant practical value for obstacle negotiation in powered transfemoral prosthetics.</p>
     </details>
+      </div>
+    </article>
   </div>
 
   <!-- Chinese Content -->
@@ -289,6 +331,11 @@
     </ul>
 
     <h2>学术发表 (Publications)</h2>
+    <article class="publication">
+      <a class="publication-preview" href="static/images/traceflow-method.png" target="_blank" rel="noopener noreferrer" aria-label="View traceflow method overview">
+        <img src="static/images/traceflow-method.png" alt="traceflow method overview" loading="lazy">
+      </a>
+      <div class="publication-body">
     <h3>TraceFlow: Guiding Frozen Flow-Matching Robot Policies with Success and Failure Traces</h3>
     <p class="pub-meta"><strong>Jiaxuan Zhang</strong>, Ruizhe Liu, Yu Zhang, Yanchao Yang · arXiv 预印本，2026</p>
     <p><a href="https://arxiv.org/abs/2609.20646" target="_blank" rel="noopener noreferrer">[arXiv]</a>
@@ -297,7 +344,14 @@
       <a href="https://modelscope.ai/models/JoeyXuan/traceflow-models" target="_blank" rel="noopener noreferrer">[模型]</a>
       <a href="https://www.modelscope.ai/datasets/JoeyXuan/traceflow-realworld" target="_blank" rel="noopener noreferrer">[真机数据]</a></p>
     <details><summary>工作简介</summary><p>TraceFlow 将进度对齐的成功与失败动作经验转化为有界的早期引导，作用于冻结的流匹配动作专家。TraceBank 从任务训练轨迹初始化，后续仅凭终局成功或失败标签堆叠机器人自己的部署轨迹，无需更新策略权重或训练价值评估器。仿真和真机实验展示了任务相关的增益，而堆叠收益有限，并非单调增长。</p></details>
+      </div>
+    </article>
     
+    <article class="publication">
+      <a class="publication-preview" href="static/images/vla2-method.png" target="_blank" rel="noopener noreferrer" aria-label="View vla2 method overview">
+        <img src="static/images/vla2-method.png" alt="vla2 method overview" loading="lazy">
+      </a>
+      <div class="publication-body">
     <h3>VLA²: Empowering Vision-Language-Action Models with an Agentic Framework for Unseen Concept Manipulation</h3>
     <p class="pub-meta">Han Zhao*, <strong>Jiaxuan Zhang</strong>*, Wenxuan Song, Pengxiang Ding, Donglin Wang (*: 共同一作)</p>
     <p>
@@ -308,7 +362,14 @@
       <summary>展开摘要</summary>
       <p>当前的视觉-语言-动作(VLA)模型在大规模机器人数据上预训练，展现出强大的多任务能力，并能很好地泛化到操作任务中视觉和语言指令的变化。然而，当面对训练数据之外的物体概念时，如数据集中未见过的物体描述和纹理，其成功率显著下降。为了解决这个问题，我们提出了一个新颖的智能体框架VLA²，该框架以OpenVLA作为执行骨干，有效利用网络检索和物体检测等外部模块为VLA提供关于目标物体的视觉和文本知识。这种方法缓解了处理分布外物体时的泛化失败问题。基于LIBERO仿真环境，我们引入了新颖的物体和物体描述，构建了具有三个难度级别的新评估基准来测试我们方法的有效性。我们的框架在设计的困难级别泛化基准上成功超越了当前最先进的模型。与独立的OpenVLA基线相比，VLA²在困难级别基准中实现了44.2%的成功率提升，在所有定制环境中平均提升20.2%，且在域内任务上没有性能下降。</p>
     </details>
+      </div>
+    </article>
 
+    <article class="publication">
+      <a class="publication-preview" href="static/images/gait-method.png" target="_blank" rel="noopener noreferrer" aria-label="View gait method overview">
+        <img src="static/images/gait-method.png" alt="gait method overview" loading="lazy">
+      </a>
+      <div class="publication-body">
     <h3>Feature Matching-Based Gait Phase Prediction for Obstacle Crossing Control of Powered Transfemoral Prosthesis</h3>
     <p class="pub-meta"><strong>IROS 2025</strong> | <strong>Jiaxuan Zhang</strong>, Yuqaun Leng, Yixuan Guo, Chenglong Fu</p>
     <p><a href="https://arxiv.org/abs/2510.24676" target="_blank">[arXiv]</a></p>
@@ -316,6 +377,8 @@
       <summary>展开摘要</summary>
       <p>对于使用动力大腿假肢的截肢者来说，跨越障碍物或复杂地形仍然是一个挑战。本研究通过使用健康踝关节上的惯性传感器来指导越障运动来解决这个问题。遗传算法计算最优的神经网络结构来预测大腿和膝关节所需的角度并适配步态进度预测算法。步态进度预测算法确定假肢膝关节电机的驱动角度指数，最终在进入假肢腾空摆动阶段之前计算出的大腿和膝关节角度，在摆动期间实时计算步态进度。结果表明，当添加到大腿角度数据的高斯噪声标准差小于1时，该步态进度预测方法能有效消除噪声干扰，在150 Hz下实现100%的步态相位进度估计准确性，大腿角度预测误差为8.71%，膝角度预测误差为6.78%。这些发现证明了该方法准确预测步态进展和关节角度的能力，为动力大腿假肢的障碍物跨越控制研究提供了重要的实用价值。</p>
     </details>
+      </div>
+    </article>
   </div>
 </div>
 
