@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <title>Jiaxuan Zhang</title>
+  <circle cx="32" cy="32" r="31.5" fill="#87CEEB"/>
+  <!-- Typeset in Times New Roman Bold; the outline also works on devices without the font. -->
+  <path fill="#112C46" transform="translate(12.91 50.98) scale(.028 -.028)"
+        d="M1250 1356 453 76H711Q894 76 967 99Q1086 135 1172 231.5Q1258 328 1291 490H1330L1275 0H33L831 1282H630Q513 1282 476 1275Q406 1262 344.5 1223.5Q283 1185 242.5 1121Q202 1057 179 959H142L179 1356Z"/>
+</svg>
